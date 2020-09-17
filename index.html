@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+  </head>
+  <body>
+    <script>
+    var y = Math.floor(1000 + Math.random() * 9000).toString();
+var a = y.split("");
+
+var z = document.createElement("h1");
+z.innerHTML = "ENTER THE NUMBER";
+z.style.marginLeft = "510px";
+
+var guess = document.createElement("input");
+guess.type = "text";
+guess.id = "number";
+guess.style.marginLeft = "550px";
+guess.style.marginTop = "-100px";
+var button = document.createElement("button");
+button.innerHTML = "SUBMIT";
+button.onclick = display;
+document.body.appendChild(z);
+document.body.appendChild(guess);
+document.body.appendChild(button);
+var row = 0;
+function display() {
+  row += 1;
+  var body = document.getElementsByTagName("body")[0];
+  body.style.backgroundColor = "white";
+  // console.log(y);
+  var x = document.getElementById("number").value;
+  var result = x.split("");
+  if (
+    a[0] == result[0] &&
+    a[1] == result[1] &&
+    a[2] == result[2] &&
+    a[3] == result[3]
+  ) {
+    var output = document.createElement("h1");
+    output.style.marginLeft = "505px";
+    output.innerHTML = "YOU WIN THE GAME";
+    var score = document.createElement("h1");
+    score.style.marginLeft = "600px";
+    if (row == 1) {
+      score.innerHTML = "SCORE : 5";
+    }
+    if (row == 2) {
+      score.innerHTML = "SCORE : 4";
+    }
+    if (row == 3) {
+      score.innerHTML = "SCORE : 3";
+    }
+    if (row == 4) {
+      score.innerHTML = "SCORE : 2";
+    }
+    if (row == 5) {
+      score.innerHTML = "SCORE : 1";
+    }
+    document.body.appendChild(output);
+    document.body.appendChild(score);
+    document.getElementById(`row${row}one`).style.background = "#7FFF00";
+    document.getElementById(`row${row}two`).style.background = "#7FFF00";
+    document.getElementById(`row${row}three`).style.background = "#7FFF00";
+    document.getElementById(`row${row}four`).style.background = "#7FFF00";
+  } else if (row == 5) {
+    var output = document.createElement("h1");
+    output.style.marginLeft = "505px";
+    output.innerHTML = "YOU LOST THE GAME";
+    var score = document.createElement("h1");
+    score.style.marginLeft = "600px";
+    score.innerHTML = "SCORE : 0";
+    document.body.appendChild(output);
+    document.body.appendChild(score);
+  } else {
+    if (a[0] == result[0]) {
+      document.getElementById(`row${row}one`).style.background = "#7FFF00";
+    }
+    if (
+      a[0] != result[0] &&
+      a[0] != result[1] &&
+      a[0] != result[2] &&
+      a[0] != result[3]
+    ) {
+      document.getElementById(`row${row}one`).style.background = "red";
+    }
+    if (a[0] == result[1] || a[0] == result[2] || a[0] == result[3]) {
+      document.getElementById(`row${row}one`).style.background = "orange";
+    }
+    if (a[1] == result[1]) {
+      document.getElementById(`row${row}two`).style.background = "#7FFF00";
+    }
+    if (
+      a[1] != result[0] &&
+      a[1] != result[1] &&
+      a[1] != result[2] &&
+      a[1] != result[3]
+    ) {
+      document.getElementById(`row${row}two`).style.background = "red";
+    }
+    if (a[1] == result[0] || a[1] == result[2] || a[1] == result[3]) {
+      document.getElementById(`row${row}two`).style.background = "orange";
+    }
+    if (a[2] == result[2]) {
+      document.getElementById(`row${row}three`).style.background = "#7FFF00";
+    }
+    if (
+      a[2] != result[0] &&
+      a[2] != result[1] &&
+      a[2] != result[2] &&
+      a[2] != result[3]
+    ) {
+      document.getElementById(`row${row}three`).style.background = "red";
+    }
+    if (a[2] == result[0] || a[2] == result[1] || a[2] == result[3]) {
+      document.getElementById(`row${row}three`).style.background = "orange";
+    }
+    if (a[3] == result[3]) {
+      document.getElementById(`row${row}four`).style.background = "#7FFF00";
+    }
+    if (
+      a[3] != result[0] &&
+      a[3] != result[1] &&
+      a[3] != result[2] &&
+      a[3] != result[3]
+    ) {
+      document.getElementById(`row${row}four`).style.background = "red";
+    }
+    if (a[3] == result[0] || a[3] == result[1] || a[3] == result[2]) {
+      document.getElementById(`row${row}four`).style.background = "orange";
+    }
+  }
+  document.getElementById(`row${row}one`).innerHTML = result[0];
+  document.getElementById(`row${row}two`).innerHTML = result[1];
+  document.getElementById(`row${row}three`).innerHTML = result[2];
+  document.getElementById(`row${row}four`).innerHTML = result[3];
+}
+
+function guessNumber(name) {
+  var body = document.getElementsByTagName("body")[0];
+  body.style.backgroundColor = "white";
+
+  var button1 = document.createElement("div");
+  button1.id = name + "one";
+  button1.style.padding = "20px";
+  button1.style.width = "10px";
+  button1.style.borderRadius = "100px";
+  button1.style.height = "10px";
+  button1.style.marginLeft = "500px";
+  button1.style.marginTop = "45px";
+  button1.style.backgroundColor = "lightgrey";
+
+  var button2 = document.createElement("div");
+  button2.id = name + "two";
+  button2.style.padding = "20px";
+  button2.style.width = "10px";
+  button2.style.borderRadius = "50px";
+  button2.style.height = "10px";
+  button2.style.marginLeft = "600px";
+  button2.style.marginTop = "-55px";
+  button2.style.backgroundColor = "lightgrey";
+
+  var button3 = document.createElement("div");
+  button3.id = name + "three";
+  button3.style.padding = "20px";
+  button3.style.width = "10px";
+  button3.style.borderRadius = "50px";
+  button3.style.height = "10px";
+  button3.style.marginLeft = "700px";
+  button3.style.marginTop = "-50px";
+  button3.style.backgroundColor = "lightgrey";
+
+  var button4 = document.createElement("div");
+  button4.id = name + "four";
+  button4.style.padding = "20px";
+  button4.style.width = "10px";
+  button4.style.borderRadius = "50px";
+  button4.style.height = "10px";
+  button4.style.marginLeft = "800px";
+  button4.style.marginTop = "-50px";
+  button4.style.backgroundColor = "lightgrey";
+
+  body.appendChild(button1);
+  body.appendChild(button2);
+  body.appendChild(button3);
+  body.appendChild(button4);
+}
+guessNumber("row1");
+guessNumber("row2");
+guessNumber("row3");
+guessNumber("row4");
+guessNumber("row5");
+    </script>
+  </body>
+</html>
